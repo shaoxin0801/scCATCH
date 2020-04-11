@@ -2,6 +2,11 @@
 
 ### Automatic Annotation on Cell Types of Clusters from Single-Cell RNA Sequencing Data
 
+| 1   |     |     |     |
+| --- | --- | --- | --- |
+| 1   |     |     |     |
+| 11  |     |     |     |
+|     |     |     |     |
 
 Recent advance in single-cell RNA sequencing (scRNA-seq) has enabled large-scale transcriptional characterization of thousands of cells in multiple complex tissues, in which accurate cell type identification becomes the prerequisite and vital step for scRNA-seq studies. Currently, the common practice in cell type annotation is to map the highly expressed marker genes with known cell markers manually based on the identified clusters, which requires the priori knowledge and tends to be subjective on the choice of which marker genes to use. Besides, such manual annotation is usually time-consuming.
 
@@ -42,7 +47,7 @@ clu_markers <- findmarkergenes(object,
 Identify potential marker genes for each cluster from a Seurat object (>= 3.0.0) after log10 normalization and cluster analysis. The potential marker genes in each cluster are identified according to its expression level compared to it in every other clusters. Only significantly highly expressed one in all pair-wise comparison of the cluster will be selected as a potential marker gene for the cluster. Genes will be revised according to NCBI Gene symbols (updated in Jan. 10, 2020, [https://www.ncbi.nlm.nih.gov/gene](https://www.ncbi.nlm.nih.gov/gene)) and no matched genes and duplicated genes will be removed.
 
 `object` 
-Seurat object (>= 3.0.0) after log10 normalization and cluster analysis. <font color=red>Please ensure data is log10 normalized data and data has been clustered before running scCATCH pipeline.</font>
+Seurat object (>= 3.0.0) after log10 normalization and cluster analysis. Please ensure data is log10 normalized data and data has been clustered before running scCATCH pipeline.
 
 `species`
 The specie of cells. The species must be defined. 'Human' or 'Mouse'.
@@ -68,12 +73,12 @@ Include the gene with at least this fold change of average gene expression compa
 `pvalue`
 Include the significantly highly expressed gene with this cutoff of p value from wilcox test compared to every other clusters. Default is 0.05.
 
-<font size=4>Output</font>
+Output
 
 `clu_markers` 
 A list include a new data matrix wherein genes are revised by official gene symbols according to NCBI Gene symbols (updated in Jan. 10, 2020, [https://www.ncbi.nlm.nih.gov/gene](https://www.ncbi.nlm.nih.gov/gene)) and no matched genes and duplicated genes are removed as well as a data.frame containing potential marker genes of each selected cluster and the corresponding expressed cells percentage and average fold change for each cluster.
 
-<font size=5>2. Cluster annotation</font>
+2. Cluster annotation
 
 ```(r)
 clu_ann <- scCATCH(object,
@@ -96,14 +101,14 @@ If the sample is from cancer tissue and you want to match cell marker genes of c
 `tissue`
 The tissue origin of cells. Select one or more related tissue types in Details. For tissues without cancer, please refer to 3.1.1 of Details for human tissue types and 3.2.1 of Details for mouse tissue types. For tissues with cancer, please refer to 3.1.2 of Details for human tissue types and 3.2.2 of Details for mouse tissue types.
 
-<font size=4>Output</font>
+Output
 
 `clu_ann`
 A data.frame containing matched cell type for each cluster, related marker genes, evidence-based score and PMID.
 
-<font size=5>3. Details</font>
+3. Details
 
-<font size=3 color=green>3.1.1 For __Human__ tissue, tissue types are listed as follows:</font>
+3.1.1 For __Human__ tissue, tissue types are listed as follows:
 
 __Adipose tissue-related__: Abdominal adipose tissue; Adipose tissue; Brown adipose tissue; Fat pad; Subcutaneous adipose tissue; Visceral adipose tissue; White adipose tissue.
 
@@ -169,7 +174,7 @@ __Vessel-related__: Adventitia; Antecubital vein; Artery; Blood vessel; Umbilica
 
 __Others__: Ascites; Epithelium; Ligament; Pluripotent stem cell; Thymus; Whartons jelly.
 
-<font size=3 color=green>3.1.2 For __Human__ tissue about cancer, cancer types and the corresponding tissue types are listed as follows:</font>
+3.1.2 For __Human__ tissue about cancer, cancer types and the corresponding tissue types are listed as follows:
 
 Acute Myelogenous Leukemia: Blood.
 
@@ -319,7 +324,7 @@ Uterine Leiomyoma: Uterus.
 
 Vascular Tumour: Lymph node.
 
-<font size=3 color=green>3.2.1 For __Mouse__ tissue, tissue types are listed as follows:</font>
+3.2.1 For __Mouse__ tissue, tissue types are listed as follows:
 
 __Adipose tissue-related__: Adipose tissue; White adipose tissue.
 
@@ -387,7 +392,7 @@ __Vessel-related__: Aorta; Artery; Blood vessel; Carotid artery.
 
 __Others__: Basilar membrane; Epithelium; Peritoneal cavity; Thymus.
 
-<font size=3 color=green>3.2.2 For __Mouse__ tissue about cancer, cancer types and the corresponding tissue types are listed as follows:</font>
+3.2.2 For __Mouse__ tissue about cancer, cancer types and the corresponding tissue types are listed as follows:
 
 Breast Cancer: Lymph node; Breast; Lung.
 
